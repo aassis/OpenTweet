@@ -163,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A8AFA8B12C4736460017779B /* TweetList */,
+				A8AFA8852C46E5880017779B /* Timeline */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 				A8AFA8B72C4738E20017779B /* TweetCell.swift */,
 				A8AFA8C12C474D7C0017779B /* TweetCellViewModel.swift */,
 				A8AFA8902C46E99B0017779B /* Model */,
-				A8AFA8852C46E5880017779B /* Timeline */,
 			);
 			path = TweetList;
 			sourceTree = "<group>";

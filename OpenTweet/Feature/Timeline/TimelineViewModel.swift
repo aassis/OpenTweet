@@ -11,11 +11,13 @@ protocol TimelineViewModelProtocol {
 
 final class TimelineViewModel: TimelineViewModelProtocol {
     private(set) var tweets: [Tweet] = []
+    private var posts: [Tweet] = []
 
     init() {
         if let data = FileReader.getFileData(forFileName: "timeline", fileExtension: "json") {
             if let decoded = try? JSONDecoder().decode(Timeline.self, from: data) {
                 self.tweets = decoded.timeline
+                posts = tweets.filter({ $0.inReplyTo == nil })
             }
         }
     }
@@ -25,12 +27,12 @@ final class TimelineViewModel: TimelineViewModelProtocol {
     }
 
     func numberOfItems() -> Int {
-        return tweets.count
+        return posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TweetCell.CellIdentifier.name) as? TweetCell {
-            let tweet = tweets[indexPath.row]
+            let tweet = posts[indexPath.row]
             let tweetViewModel = TweetCellViewModel(tweet: tweet)
             cell.setupWith(tweet: tweetViewModel)
             return cell
