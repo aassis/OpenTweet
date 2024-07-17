@@ -17,6 +17,6 @@ extension ViewCode {
     }
 
     func additionalConfiguration() {
-        // optional
+        /// optional method
     }
 }

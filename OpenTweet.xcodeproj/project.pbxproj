@@ -13,6 +13,11 @@
 		009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C4C801D9F0CD600F0BC6C /* OpenTweetTests.swift */; };
 		009C4C8C1D9F0CD600F0BC6C /* OpenTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C4C8B1D9F0CD600F0BC6C /* OpenTweetUITests.swift */; };
 		009C4C9B1D9F0D4100F0BC6C /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 009C4C9A1D9F0D4100F0BC6C /* timeline.json */; };
+		A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDABE2C4822B7001BACDD /* NetworkService.swift */; };
+		A84FDAC42C482D8C001BACDD /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */; };
+		A84FDAC82C483300001BACDD /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC72C483300001BACDD /* Timeline.swift */; };
+		A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */; };
+		A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -57,6 +62,11 @@
 		009C4C8D1D9F0CD600F0BC6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		009C4C9A1D9F0D4100F0BC6C /* timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timeline.json; sourceTree = "<group>"; };
 		009C4C9D1D9F104800F0BC6C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A84FDABE2C4822B7001BACDD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
+		A84FDAC72C483300001BACDD /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEndpoint.swift; sourceTree = "<group>"; };
+		A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -123,9 +133,11 @@
 				A8AFA8882C46E5AF0017779B /* AppDelegate.swift */,
 				A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */,
 				A8AFA8BC2C4745060017779B /* Builder */,
-				A8AFA8B42C47381C0017779B /* Extensions */,
-				A8AFA8962C471F370017779B /* Util */,
+				A84FDABD2C4820DF001BACDD /* Network */,
+				A84FDAC62C4832D8001BACDD /* Components */,
 				A8AFA8842C46E5820017779B /* Feature */,
+				A8AFA8962C471F370017779B /* Util */,
+				A8AFA8B42C47381C0017779B /* Extensions */,
 				009C4C741D9F0CD600F0BC6C /* LaunchScreen.storyboard */,
 				009C4C721D9F0CD600F0BC6C /* Assets.xcassets */,
 				009C4C771D9F0CD600F0BC6C /* Info.plist */,
@@ -159,10 +171,37 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		A8AFA8842C46E5820017779B /* Feature */ = {
+		A84FDABD2C4820DF001BACDD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */,
+				A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */,
+				A84FDABE2C4822B7001BACDD /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A84FDAC52C4832C6001BACDD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A84FDAC62C4832D8001BACDD /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				A8AFA8B12C4736460017779B /* TweetList */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A8AFA8842C46E5820017779B /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAC52C4832C6001BACDD /* Service */,
+				A8AFA8902C46E99B0017779B /* Model */,
 				A8AFA8852C46E5880017779B /* Timeline */,
 			);
 			path = Feature;
@@ -180,6 +219,7 @@
 		A8AFA8902C46E99B0017779B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A84FDAC72C483300001BACDD /* Timeline.swift */,
 				A8AFA8912C46E9A50017779B /* Tweet.swift */,
 			);
 			path = Model;
@@ -199,7 +239,6 @@
 				A8AFA8B22C4736580017779B /* TweetListView.swift */,
 				A8AFA8B72C4738E20017779B /* TweetCell.swift */,
 				A8AFA8C12C474D7C0017779B /* TweetCellViewModel.swift */,
-				A8AFA8902C46E99B0017779B /* Model */,
 			);
 			path = TweetList;
 			sourceTree = "<group>";
@@ -365,14 +404,19 @@
 				A8AFA8C22C474D7C0017779B /* TweetCellViewModel.swift in Sources */,
 				A8AFA8982C4729850017779B /* FileReader.swift in Sources */,
 				A8AFA8B62C47382A0017779B /* ViewCode.swift in Sources */,
+				A84FDAC82C483300001BACDD /* Timeline.swift in Sources */,
+				A84FDAC42C482D8C001BACDD /* NetworkEndpoint.swift in Sources */,
 				A8AFA8BE2C4745110017779B /* BuilderProtocol.swift in Sources */,
 				A8AFA8C02C4745220017779B /* TimelineViewControllerBuilder.swift in Sources */,
 				A8AFA8B32C4736580017779B /* TweetListView.swift in Sources */,
 				A8AFA8B82C4738E20017779B /* TweetCell.swift in Sources */,
+				A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */,
+				A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */,
 				A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
 				A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */,
 				A8AFA8B02C47363E0017779B /* TimelineViewModel.swift in Sources */,
+				A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */,
 				A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

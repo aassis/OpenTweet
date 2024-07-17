@@ -1,8 +1,10 @@
 import Foundation
+import Combine
 import UIKit
 
 protocol TimelineViewModelProtocol {
-    var tweets: [Tweet] { get }
+    var service: NetworkService<TimelineEndpoint> { get }
+    func loadTimeline() -> AnyPublisher<Bool, Error>
 
     func numberOfSections() -> Int
     func numberOfItems() -> Int
@@ -10,16 +12,25 @@ protocol TimelineViewModelProtocol {
 }
 
 final class TimelineViewModel: TimelineViewModelProtocol {
-    private(set) var tweets: [Tweet] = []
+    var service: NetworkService<TimelineEndpoint>
+
+    private var tweets: [Tweet] = []
     private var posts: [Tweet] = []
 
-    init() {
-        if let data = FileReader.getFileData(forFileName: "timeline", fileExtension: "json") {
-            if let decoded = try? JSONDecoder().decode(Timeline.self, from: data) {
-                self.tweets = decoded.timeline
-                posts = tweets.filter({ $0.inReplyTo == nil })
-            }
-        }
+    /// For the publishers declared in the protocol to work, we need to have them return a reference to an actual @Published property's Publisher
+    @Published private var finishedLoading: Bool = false
+    var finishedLoadingPublisher: Published<Bool>.Publisher { $finishedLoading }
+
+    init(service: NetworkService<TimelineEndpoint>) {
+        self.service = service
+    }
+
+    func loadTimeline() -> AnyPublisher<Bool, Error> {
+        return service.request(.getTimeline, type: Timeline.self).compactMap({ response in
+            self.tweets = response.timeline
+            self.posts = response.timeline.filter({ $0.inReplyTo == nil })
+            return .some(true)
+        }).eraseToAnyPublisher()
     }
 
     func numberOfSections() -> Int {

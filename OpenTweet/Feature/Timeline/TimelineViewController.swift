@@ -1,8 +1,11 @@
 import UIKit
+import Combine
 
 final class TimelineViewController: UIViewController {
 
     private let viewModel: TimelineViewModelProtocol
+
+    private var cancellable = Set<AnyCancellable>()
 
     init(viewModel: TimelineViewModelProtocol) {
         self.viewModel = viewModel
@@ -27,7 +30,19 @@ final class TimelineViewController: UIViewController {
         tweetListView.tableView.delegate = self
         tweetListView.tableView.dataSource = self
         tweetListView.tableView.register(TweetCell.self, forCellReuseIdentifier: TweetCell.CellIdentifier.name)
-        tweetListView.tableView.reloadData()
+
+        viewModel.loadTimeline()
+            .sink { completion in
+                switch completion {
+                case .failure:
+                    // present error
+                    break
+                default:
+                    break
+                }
+            } receiveValue: { loaded in
+                self.tweetListView.tableView.reloadData()
+            }.store(in: &cancellable)
 	}
 }
 
