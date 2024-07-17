@@ -55,7 +55,7 @@ final class TweetCell: UITableViewCell {
         setupViewCode()
         labelAuthorName.text = tweet.authorName
         labelDate.text = tweet.dateShortString
-        labelContent.text = tweet.tweetContent
+        labelContent.attributedText = tweet.tweetContent(fontSize: Constants.fontSize)
     }
 }
 
