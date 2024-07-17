@@ -18,6 +18,7 @@
 		A84FDAC82C483300001BACDD /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC72C483300001BACDD /* Timeline.swift */; };
 		A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */; };
 		A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */; };
+		A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -67,6 +68,7 @@
 		A84FDAC72C483300001BACDD /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEndpoint.swift; sourceTree = "<group>"; };
 		A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProviderMock.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */,
+				A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
 				A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */,
 				A8AFA8B02C47363E0017779B /* TimelineViewModel.swift in Sources */,
+				A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */,
 				A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */,
 				A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */,
 			);

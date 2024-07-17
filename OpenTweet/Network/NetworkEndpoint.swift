@@ -5,6 +5,7 @@ enum HTTPMethod: String {
     case get = "GET"
 }
 
+/// This is an Endpoint protocol to be used by our NetworkServiceProtocol, when declaring an enum as an endpoint, we can abstract a lot of information required by an http request.
 protocol NetworkEndpoint {
     /// Just like with the HTTPMethod, we're only adding the basics, other relevant properties for an HTTP request like headers and parameters can be added as needed
     var baseURL: URL { get }
