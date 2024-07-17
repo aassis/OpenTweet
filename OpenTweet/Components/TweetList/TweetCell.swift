@@ -1,6 +1,10 @@
 import UIKit
+import Combine
 
 final class TweetCell: UITableViewCell {
+
+    private var cancellable = Set<AnyCancellable>()
+
     struct CellIdentifier {
         static let name = "tweetCell"
     }
@@ -43,7 +47,7 @@ final class TweetCell: UITableViewCell {
     private lazy var imageAvatar: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFit
         image.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         image.layer.borderWidth = 1.0
         image.layer.borderColor = UIColor.black.cgColor
@@ -58,9 +62,26 @@ final class TweetCell: UITableViewCell {
         labelAuthorName.text = tweet.authorName
         labelDate.text = tweet.dateShortString
         labelContent.attributedText = tweet.tweetContent(fontSize: Constants.fontSize)
+        tweet.loadUserAvatar()?
+            .receive(on: DispatchQueue.global(qos: .userInitiated))
+            .sink(receiveCompletion: { _ in }, receiveValue: { result in
+                DispatchQueue.main.async { [weak self] in
+                    if result.animated {
+                        self?.imageAvatar.alpha = 0.0
+                        self?.imageAvatar.image = result.image
+                        UIView.animate(withDuration: 0.2) {
+                            self?.imageAvatar.alpha = 1.0
+                        }
+                    } else {
+                        self?.imageAvatar.alpha = 1.0
+                        self?.imageAvatar.image = result.image
+                    }
+                }
+            }).store(in: &cancellable)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        /// Here we are checking to see if the cell which is already selected, was selected (touched) again, so we can dismiss the selection state
         if isSelected && selected {
             super.setSelected(false, animated: animated)
             resetCell()

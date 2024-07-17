@@ -1,10 +1,13 @@
 import Foundation
+import Combine
 import UIKit
 
 protocol TweetCellViewModelProtocol {
+    typealias CellImageAnimated = (image: UIImage?, animated: Bool)
     var authorName: String { get }
     var dateShortString: String? { get }
     func tweetContent(fontSize: CGFloat) -> NSAttributedString
+    func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>?
 }
 
 final class TweetCellViewModel: TweetCellViewModelProtocol {
@@ -64,5 +67,21 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
         }
 
         return highlightHandle(fromContentText: tweet.content, fontSize: fontSize)
+    }
+
+    func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>? {
+        if let imgUrl = tweet.avatar {
+            return URLSession.shared.loadImage(forUrlString: imgUrl)?
+                .compactMap({ response in
+                    let image = UIImage(data: response.data)
+                    let animated = !response.cached
+                    return CellImageAnimated(image: image, animated: animated)
+                })
+                .mapError({ failure in
+                    NSError(domain: "com.opentable.OpenTweet", code: failure.errorCode, userInfo: failure.userInfo)
+                })
+                .eraseToAnyPublisher()
+        }
+        return nil
     }
 }

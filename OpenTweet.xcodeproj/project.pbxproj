@@ -19,6 +19,8 @@
 		A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */; };
 		A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */; };
 		A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */; };
+		A84FDAD32C487FD8001BACDD /* URLSession+NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD22C487FD8001BACDD /* URLSession+NetworkProvider.swift */; };
+		A84FDAD52C487FE6001BACDD /* URLSession+CachedImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -69,6 +71,8 @@
 		A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEndpoint.swift; sourceTree = "<group>"; };
 		A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProviderMock.swift; sourceTree = "<group>"; };
+		A84FDAD22C487FD8001BACDD /* URLSession+NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkProvider.swift"; sourceTree = "<group>"; };
+		A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+CachedImageLoader.swift"; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */,
 				A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */,
 				A84FDABE2C4822B7001BACDD /* NetworkService.swift */,
+				A84FDAD22C487FD8001BACDD /* URLSession+NetworkProvider.swift */,
+				A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				A8AFA8C22C474D7C0017779B /* TweetCellViewModel.swift in Sources */,
 				A8AFA8982C4729850017779B /* FileReader.swift in Sources */,
 				A8AFA8B62C47382A0017779B /* ViewCode.swift in Sources */,
+				A84FDAD32C487FD8001BACDD /* URLSession+NetworkProvider.swift in Sources */,
 				A84FDAC82C483300001BACDD /* Timeline.swift in Sources */,
 				A84FDAC42C482D8C001BACDD /* NetworkEndpoint.swift in Sources */,
 				A8AFA8BE2C4745110017779B /* BuilderProtocol.swift in Sources */,
@@ -420,6 +427,7 @@
 				A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */,
 				A8AFA8B02C47363E0017779B /* TimelineViewModel.swift in Sources */,
 				A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */,
+				A84FDAD52C487FE6001BACDD /* URLSession+CachedImageLoader.swift in Sources */,
 				A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */,
 				A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */,
 			);
