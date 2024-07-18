@@ -104,6 +104,13 @@ final class TweetCell: UITableViewCell {
             self.layer.shadowOpacity = 0
         }
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellable.removeAll()
+        self.imageAvatar.contentMode = .center
+        self.imageAvatar.image = UIImage(systemName: "person")
+    }
 }
 
 extension TweetCell: ViewCode {
