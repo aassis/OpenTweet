@@ -25,6 +25,7 @@
 		A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */; };
 		A84FDAE82C49A726001BACDD /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAE72C49A726001BACDD /* Swinject */; };
 		A84FDAEB2C49A740001BACDD /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAEA2C49A740001BACDD /* SharedContainer.swift */; };
+		A84FDAF52C49D68B001BACDD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAF42C49D68B001BACDD /* AlamofireImage */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -95,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84FDAE82C49A726001BACDD /* Swinject in Frameworks */,
+				A84FDAF52C49D68B001BACDD /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +302,7 @@
 			name = OpenTweet;
 			packageProductDependencies = (
 				A84FDAE72C49A726001BACDD /* Swinject */,
+				A84FDAF42C49D68B001BACDD /* AlamofireImage */,
 			);
 			productName = OpenTweet;
 			productReference = 009C4C681D9F0CD600F0BC6C /* OpenTweet.app */;
@@ -381,6 +384,7 @@
 			mainGroup = 009C4C5F1D9F0CD600F0BC6C;
 			packageReferences = (
 				A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */,
+				A84FDAF32C49D68B001BACDD /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 009C4C691D9F0CD600F0BC6C /* Products */;
 			projectDirPath = "";
@@ -770,6 +774,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		A84FDAF32C49D68B001BACDD /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -777,6 +789,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		A84FDAF42C49D68B001BACDD /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A84FDAF32C49D68B001BACDD /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

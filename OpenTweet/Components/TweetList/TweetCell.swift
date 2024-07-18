@@ -1,9 +1,7 @@
 import UIKit
-import Combine
+import AlamofireImage
 
 final class TweetCell: UITableViewCell {
-
-    private var cancellable = Set<AnyCancellable>()
 
     struct CellIdentifier {
         static let name = "tweetCell"
@@ -38,8 +36,7 @@ final class TweetCell: UITableViewCell {
     private lazy var imageAvatar: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .center
-        imageView.image = UIImage(systemName: "person")
+        imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         imageView.layer.borderWidth = 1.0
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -54,22 +51,13 @@ final class TweetCell: UITableViewCell {
         labelAuthorName.text = viewModel.authorName
         labelDate.text = viewModel.dateShortString
         labelContent.attributedText = viewModel.contentAttributedString
-        viewModel.loadUserAvatar()?
-            .sink(receiveCompletion: { _ in }, receiveValue: { result in
-                DispatchQueue.main.async { [weak self] in
-                    self?.imageAvatar.contentMode = .scaleAspectFit
-                    self?.imageAvatar.alpha = 0.0
-                    self?.imageAvatar.image = result.image
-
-                    if result.animated {
-                        UIView.animate(withDuration: 0.2) {
-                            self?.imageAvatar.alpha = 1.0
-                        }
-                    } else {
-                        self?.imageAvatar.alpha = 1.0
-                    }
-                }
-            }).store(in: &cancellable)
+        if let avatarUrlString = viewModel.avatarUrlString,
+           let url = URL(string: avatarUrlString) {
+            imageAvatar.af.setImage(withURL: url,
+                                    placeholderImage: UIImage(systemName: "person"),
+                                    imageTransition: .crossDissolve(0.2),
+                                    runImageTransitionIfCached: false)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -107,9 +95,7 @@ final class TweetCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        cancellable.removeAll()
-        self.imageAvatar.contentMode = .center
-        self.imageAvatar.image = UIImage(systemName: "person")
+        self.imageAvatar.image = nil
     }
 }
 

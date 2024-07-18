@@ -5,9 +5,9 @@ import UIKit
 protocol TweetCellViewModelProtocol {
     typealias CellImageAnimated = (image: UIImage?, animated: Bool)
     var authorName: String { get }
+    var avatarUrlString: String? { get }
     var dateShortString: String? { get }
     var contentAttributedString: NSAttributedString? { get }
-    func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>?
 }
 
 final class TweetCellViewModel: TweetCellViewModelProtocol {
@@ -19,6 +19,10 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
 
     var authorName: String {
         tweet.author
+    }
+
+    var avatarUrlString: String? {
+        tweet.avatar
     }
 
     var dateShortString: String? {
@@ -37,7 +41,6 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
     }()
 
     private func tweetContent() -> NSAttributedString {
-        print("attributingString for tweet: \(tweet.id)")
         /**
          This function searches for a handle in the provided string using a regular expression, and applies a different weighted font and color for the range where the handle is found.
          */
@@ -67,7 +70,8 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
         return highlightHandle(fromContentText: tweet.content)
     }
 
-    func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>? {
+    /// I didn't want to remove this implementation, but I stopped using it due to performance issues. I want to revisit it in the future to improve it.
+    private func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>? {
         if let imgUrl = tweet.avatar {
             return URLSession.shared.loadImage(forUrlString: imgUrl)?
                 .compactMap({ response in
