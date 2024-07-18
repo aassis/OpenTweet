@@ -223,8 +223,6 @@
 		A8AFA8842C46E5820017779B /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				A84FDAC52C4832C6001BACDD /* Service */,
-				A8AFA8902C46E99B0017779B /* Model */,
 				A8AFA8852C46E5880017779B /* Timeline */,
 				A84FDAE12C48B682001BACDD /* Thread */,
 			);
@@ -234,6 +232,8 @@
 		A8AFA8852C46E5880017779B /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				A84FDAC52C4832C6001BACDD /* Service */,
+				A8AFA8902C46E99B0017779B /* Model */,
 				009C4C6D1D9F0CD600F0BC6C /* TimelineViewController.swift */,
 				A8AFA8AF2C47363E0017779B /* TimelineViewModel.swift */,
 			);
