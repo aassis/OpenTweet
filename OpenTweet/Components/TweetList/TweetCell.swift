@@ -9,19 +9,10 @@ final class TweetCell: UITableViewCell {
         static let name = "tweetCell"
     }
 
-    struct Constants {
-        static let sidePaddings: CGFloat = 24.0
-        static let verticalPaddings: CGFloat = 8.0
-        static let insidePadding: CGFloat = 8.0
-        static let avatarHeightWidth: CGFloat = 40.0
-        static let avatarCornerRadius: CGFloat = 20.0
-        static let fontSize: CGFloat = 14.0
-    }
-
     private lazy var labelAuthorName: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.fontSize, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: ViewCodeConstants.fontSize, weight: .bold)
         label.textColor = .black
         return label
     }()
@@ -29,7 +20,7 @@ final class TweetCell: UITableViewCell {
     private lazy var labelContent: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.fontSize)
+        label.font = UIFont.systemFont(ofSize: ViewCodeConstants.fontSize)
         label.numberOfLines = 4
         label.lineBreakMode = .byWordWrapping
         label.textColor = .darkGray
@@ -39,7 +30,7 @@ final class TweetCell: UITableViewCell {
     private lazy var labelDate: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.fontSize)
+        label.font = UIFont.systemFont(ofSize: ViewCodeConstants.fontSize)
         label.textColor = .lightGray
         return label
     }()
@@ -52,7 +43,7 @@ final class TweetCell: UITableViewCell {
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         imageView.layer.borderWidth = 1.0
         imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.layer.cornerRadius = Constants.avatarCornerRadius
+        imageView.layer.cornerRadius = ViewCodeConstants.avatarCornerRadius
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         return imageView
@@ -62,9 +53,8 @@ final class TweetCell: UITableViewCell {
         setupViewCode()
         labelAuthorName.text = viewModel.authorName
         labelDate.text = viewModel.dateShortString
-        labelContent.attributedText = viewModel.tweetContent(fontSize: Constants.fontSize)
+        labelContent.attributedText = viewModel.contentAttributedString
         viewModel.loadUserAvatar()?
-            .receive(on: DispatchQueue.global(qos: .userInitiated))
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 DispatchQueue.main.async { [weak self] in
                     self?.imageAvatar.contentMode = .scaleAspectFit
@@ -131,10 +121,10 @@ extension TweetCell: ViewCode {
     }
 
     func buildConstraints() {
-        let sidePaddings = Constants.sidePaddings
-        let verticalPadding = Constants.verticalPaddings
-        let insidePadding = Constants.insidePadding
-        let avatarHeightWidth = Constants.avatarHeightWidth
+        let sidePaddings = ViewCodeConstants.sidePaddings
+        let verticalPadding = ViewCodeConstants.verticalPaddings
+        let insidePadding = ViewCodeConstants.insidePadding
+        let avatarHeightWidth = ViewCodeConstants.avatarHeightWidth
 
         imageAvatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: verticalPadding).isActive = true
         imageAvatar.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: sidePaddings).isActive = true

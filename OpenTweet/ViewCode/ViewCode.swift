@@ -20,3 +20,12 @@ extension ViewCode {
         /// optional method
     }
 }
+
+struct ViewCodeConstants {
+    static let sidePaddings: CGFloat = 24.0
+    static let verticalPaddings: CGFloat = 8.0
+    static let insidePadding: CGFloat = 8.0
+    static let avatarHeightWidth: CGFloat = 40.0
+    static let avatarCornerRadius: CGFloat = 20.0
+    static let fontSize: CGFloat = 14.0
+}

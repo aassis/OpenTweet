@@ -42,9 +42,8 @@ final class ThreadViewModel: ThreadViewModelProtocol {
     }
 
     func highlightSourceTweetIn(_ tableView: UITableView) {
-        if let index = thread.firstIndex(where: { $0.id == tappedTweet.id }),
-           let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
-            cell.setSelected(true, animated: true)
+        if let index = thread.firstIndex(where: { $0.id == tappedTweet.id }) {
+            tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
         }
     }
 }
