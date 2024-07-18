@@ -19,9 +19,11 @@
 		A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */; };
 		A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */; };
 		A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */; };
-		A84FDAD32C487FD8001BACDD /* URLSession+NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD22C487FD8001BACDD /* URLSession+NetworkProvider.swift */; };
 		A84FDAD52C487FE6001BACDD /* URLSession+CachedImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */; };
 		A84FDAD92C488EFC001BACDD /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD82C488EFC001BACDD /* DateFormatters.swift */; };
+		A84FDAE02C48B67F001BACDD /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */; };
+		A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */; };
+		A84FDAE52C48B74C001BACDD /* ThreadViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE42C48B74C001BACDD /* ThreadViewControllerBuilder.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -72,9 +74,11 @@
 		A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEndpoint.swift; sourceTree = "<group>"; };
 		A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProviderMock.swift; sourceTree = "<group>"; };
-		A84FDAD22C487FD8001BACDD /* URLSession+NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkProvider.swift"; sourceTree = "<group>"; };
 		A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+CachedImageLoader.swift"; sourceTree = "<group>"; };
 		A84FDAD82C488EFC001BACDD /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
+		A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
+		A84FDAE42C48B74C001BACDD /* ThreadViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewControllerBuilder.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -185,7 +189,6 @@
 				A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */,
 				A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */,
 				A84FDABE2C4822B7001BACDD /* NetworkService.swift */,
-				A84FDAD22C487FD8001BACDD /* URLSession+NetworkProvider.swift */,
 				A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */,
 			);
 			path = Network;
@@ -208,12 +211,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		A84FDAE12C48B682001BACDD /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */,
+				A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */,
+			);
+			path = Thread;
+			sourceTree = "<group>";
+		};
 		A8AFA8842C46E5820017779B /* Feature */ = {
 			isa = PBXGroup;
 			children = (
 				A84FDAC52C4832C6001BACDD /* Service */,
 				A8AFA8902C46E99B0017779B /* Model */,
 				A8AFA8852C46E5880017779B /* Timeline */,
+				A84FDAE12C48B682001BACDD /* Thread */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -268,6 +281,7 @@
 			children = (
 				A8AFA8BD2C4745110017779B /* BuilderProtocol.swift */,
 				A8AFA8BF2C4745220017779B /* TimelineViewControllerBuilder.swift */,
+				A84FDAE42C48B74C001BACDD /* ThreadViewControllerBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -416,7 +430,6 @@
 				A8AFA8C22C474D7C0017779B /* TweetCellViewModel.swift in Sources */,
 				A8AFA8982C4729850017779B /* FileReader.swift in Sources */,
 				A8AFA8B62C47382A0017779B /* ViewCode.swift in Sources */,
-				A84FDAD32C487FD8001BACDD /* URLSession+NetworkProvider.swift in Sources */,
 				A84FDAC82C483300001BACDD /* Timeline.swift in Sources */,
 				A84FDAC42C482D8C001BACDD /* NetworkEndpoint.swift in Sources */,
 				A84FDAD92C488EFC001BACDD /* DateFormatters.swift in Sources */,
@@ -424,13 +437,16 @@
 				A8AFA8C02C4745220017779B /* TimelineViewControllerBuilder.swift in Sources */,
 				A8AFA8B32C4736580017779B /* TweetListView.swift in Sources */,
 				A8AFA8B82C4738E20017779B /* TweetCell.swift in Sources */,
+				A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */,
 				A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */,
+				A84FDAE52C48B74C001BACDD /* ThreadViewControllerBuilder.swift in Sources */,
 				A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */,
 				A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
 				A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */,
 				A8AFA8B02C47363E0017779B /* TimelineViewModel.swift in Sources */,
 				A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */,
+				A84FDAE02C48B67F001BACDD /* ThreadViewController.swift in Sources */,
 				A84FDAD52C487FE6001BACDD /* URLSession+CachedImageLoader.swift in Sources */,
 				A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */,
 				A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */,

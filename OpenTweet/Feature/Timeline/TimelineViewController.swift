@@ -27,6 +27,7 @@ final class TimelineViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        self.title = "Timeline"
         tweetListView.tableView.delegate = self
         tweetListView.tableView.dataSource = self
         tweetListView.tableView.register(TweetCell.self, forCellReuseIdentifier: TweetCell.CellIdentifier.name)
@@ -44,6 +45,12 @@ final class TimelineViewController: UIViewController {
                 self.tweetListView.tableView.reloadData()
             }.store(in: &cancellable)
 	}
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        /// Selecting a row at nil position effectively deselects any selected row, preventing leaving a row in a selected state upon attempting to view it's respective thread
+        tweetListView.tableView.selectRow(at: nil, animated: false, scrollPosition: .none)
+    }
 }
 
 extension TimelineViewController: UITableViewDataSource {
@@ -67,5 +74,10 @@ extension TimelineViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = viewModel.getThreadViewController(forIndexPath: indexPath)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

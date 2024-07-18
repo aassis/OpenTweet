@@ -45,36 +45,38 @@ final class TweetCell: UITableViewCell {
     }()
 
     private lazy var imageAvatar: UIImageView = {
-        let image = UIImageView(frame: .zero)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
-        image.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        image.layer.borderWidth = 1.0
-        image.layer.borderColor = UIColor.black.cgColor
-        image.layer.cornerRadius = Constants.avatarCornerRadius
-        image.clipsToBounds = true
-        image.layer.masksToBounds = true
-        return image
+        let imageView = UIImageView(frame: .zero)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .center
+        imageView.image = UIImage(systemName: "person")
+        imageView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        imageView.layer.borderWidth = 1.0
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.cornerRadius = Constants.avatarCornerRadius
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        return imageView
     }()
 
-    func setupWith(tweet: TweetCellViewModelProtocol) {
+    func setupWith(viewModel: TweetCellViewModelProtocol) {
         setupViewCode()
-        labelAuthorName.text = tweet.authorName
-        labelDate.text = tweet.dateShortString
-        labelContent.attributedText = tweet.tweetContent(fontSize: Constants.fontSize)
-        tweet.loadUserAvatar()?
+        labelAuthorName.text = viewModel.authorName
+        labelDate.text = viewModel.dateShortString
+        labelContent.attributedText = viewModel.tweetContent(fontSize: Constants.fontSize)
+        viewModel.loadUserAvatar()?
             .receive(on: DispatchQueue.global(qos: .userInitiated))
             .sink(receiveCompletion: { _ in }, receiveValue: { result in
                 DispatchQueue.main.async { [weak self] in
+                    self?.imageAvatar.contentMode = .scaleAspectFit
+                    self?.imageAvatar.alpha = 0.0
+                    self?.imageAvatar.image = result.image
+
                     if result.animated {
-                        self?.imageAvatar.alpha = 0.0
-                        self?.imageAvatar.image = result.image
                         UIView.animate(withDuration: 0.2) {
                             self?.imageAvatar.alpha = 1.0
                         }
                     } else {
                         self?.imageAvatar.alpha = 1.0
-                        self?.imageAvatar.image = result.image
                     }
                 }
             }).store(in: &cancellable)
