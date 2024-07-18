@@ -12,17 +12,6 @@ protocol TweetCellViewModelProtocol {
 
 final class TweetCellViewModel: TweetCellViewModelProtocol {
     private let tweet: Tweet
-    
-    private lazy var dateFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        return formatter
-    }()
-
-    private lazy var shortDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return formatter
-    }()
 
     init(tweet: Tweet) {
         self.tweet = tweet
@@ -33,10 +22,7 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
     }
 
     var dateShortString: String? {
-        if let date = dateFormatter.date(from: tweet.date) {
-            return shortDateFormatter.string(from: date)
-        }
-        return nil
+        return DateFormatter.shortDateFormatter.string(from: tweet.date)
     }
 
     func tweetContent(fontSize: CGFloat) -> NSAttributedString {

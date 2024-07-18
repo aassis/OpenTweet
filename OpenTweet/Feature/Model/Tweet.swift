@@ -6,7 +6,7 @@ struct Tweet: Codable {
     let author: String
     let content: String
     let avatar: String?
-    let date: String
+    let date: Date
     let inReplyTo: String?
 
     enum CodingKeys: String, CodingKey {
@@ -23,7 +23,8 @@ struct Tweet: Codable {
             let id = try? container.decode(String.self, forKey: .id),
               let author = try? container.decode(String.self, forKey: .author),
               let content = try? container.decode(String.self, forKey: .content),
-              let date = try? container.decode(String.self, forKey: .date) else {
+              let dateString = try? container.decode(String.self, forKey: .date),
+              let date = DateFormatter.serviceDateFormatter.date(from: dateString) else {
             throw NSError(domain: "com.opentable.OpenTweet", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode model"])
         }
 

@@ -27,7 +27,7 @@ final class TimelineViewModel: TimelineViewModelProtocol {
 
     func loadTimeline() -> AnyPublisher<Bool, Error> {
         return service.request(.getTimeline, type: Timeline.self).compactMap({ response in
-            self.tweets = response.timeline
+            self.tweets = response.timeline.sorted(by: { $0.date < $1.date })
             self.posts = response.timeline.filter({ $0.inReplyTo == nil })
             return .some(true)
         }).eraseToAnyPublisher()
