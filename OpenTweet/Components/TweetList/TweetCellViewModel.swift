@@ -6,7 +6,7 @@ protocol TweetCellViewModelProtocol {
     typealias CellImageAnimated = (image: UIImage?, animated: Bool)
     var authorName: String { get }
     var dateShortString: String? { get }
-    func tweetContent(fontSize: CGFloat) -> NSAttributedString
+    var contentAttributedString: NSAttributedString? { get }
     func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>?
 }
 
@@ -25,11 +25,23 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
         return DateFormatter.shortDateFormatter.string(from: tweet.date)
     }
 
-    func tweetContent(fontSize: CGFloat) -> NSAttributedString {
+    private var _contentAttributedString: NSAttributedString?
+    lazy var contentAttributedString: NSAttributedString? = {
+        if let attString = _contentAttributedString {
+            return attString
+        } else {
+            let attString = tweetContent()
+            _contentAttributedString = attString
+            return attString
+        }
+    }()
+
+    private func tweetContent() -> NSAttributedString {
+        print("attributingString for tweet: \(tweet.id)")
         /**
          This function searches for a handle in the provided string using a regular expression, and applies a different weighted font and color for the range where the handle is found.
          */
-        func highlightHandle(fromContentText text: String, fontSize: CGFloat) -> NSAttributedString {
+        func highlightHandle(fromContentText text: String) -> NSAttributedString {
             // Defines the pattern we're looking for, in this case, any text and underscore followed by @.
             let pattern = "@[a-zA-Z0-9_]+"
 
@@ -41,7 +53,7 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
 
             // Instantiating the mutable attributed string and the attribute dictionary we'll use
             let attributedString = NSMutableAttributedString(string: text)
-            let boldAttribute: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: fontSize),
+            let boldAttribute: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: ViewCodeConstants.fontSize),
                                                                 .foregroundColor: UIColor.blue]
 
             // Iterating through every match the regular expression found within the original text, and applying the bold attribute in the match's range
@@ -52,7 +64,7 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
             return attributedString
         }
 
-        return highlightHandle(fromContentText: tweet.content, fontSize: fontSize)
+        return highlightHandle(fromContentText: tweet.content)
     }
 
     func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>? {
