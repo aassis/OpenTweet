@@ -1,4 +1,5 @@
 import UIKit
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -6,8 +7,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        let viewController = TimelineViewControllerBuilder.build()
+
+        let viewController = Container.sharedContainer.resolve(TimelineViewController.self)!
         let navController = UINavigationController(rootViewController: viewController)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navController

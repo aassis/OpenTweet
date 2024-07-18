@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,8 @@
 		A84FDAD92C488EFC001BACDD /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD82C488EFC001BACDD /* DateFormatters.swift */; };
 		A84FDAE02C48B67F001BACDD /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */; };
 		A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */; };
-		A84FDAE52C48B74C001BACDD /* ThreadViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE42C48B74C001BACDD /* ThreadViewControllerBuilder.swift */; };
+		A84FDAE82C49A726001BACDD /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAE72C49A726001BACDD /* Swinject */; };
+		A84FDAEB2C49A740001BACDD /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAEA2C49A740001BACDD /* SharedContainer.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -32,8 +33,6 @@
 		A8AFA8B32C4736580017779B /* TweetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8B22C4736580017779B /* TweetListView.swift */; };
 		A8AFA8B62C47382A0017779B /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8B52C47382A0017779B /* ViewCode.swift */; };
 		A8AFA8B82C4738E20017779B /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8B72C4738E20017779B /* TweetCell.swift */; };
-		A8AFA8BE2C4745110017779B /* BuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8BD2C4745110017779B /* BuilderProtocol.swift */; };
-		A8AFA8C02C4745220017779B /* TimelineViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8BF2C4745220017779B /* TimelineViewControllerBuilder.swift */; };
 		A8AFA8C22C474D7C0017779B /* TweetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8C12C474D7C0017779B /* TweetCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +77,7 @@
 		A84FDAD82C488EFC001BACDD /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
-		A84FDAE42C48B74C001BACDD /* ThreadViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewControllerBuilder.swift; sourceTree = "<group>"; };
+		A84FDAEA2C49A740001BACDD /* SharedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedContainer.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -87,8 +86,6 @@
 		A8AFA8B22C4736580017779B /* TweetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetListView.swift; sourceTree = "<group>"; };
 		A8AFA8B52C47382A0017779B /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		A8AFA8B72C4738E20017779B /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
-		A8AFA8BD2C4745110017779B /* BuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderProtocol.swift; sourceTree = "<group>"; };
-		A8AFA8BF2C4745220017779B /* TimelineViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewControllerBuilder.swift; sourceTree = "<group>"; };
 		A8AFA8C12C474D7C0017779B /* TweetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84FDAE82C49A726001BACDD /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,12 +142,12 @@
 			children = (
 				A8AFA8882C46E5AF0017779B /* AppDelegate.swift */,
 				A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */,
-				A8AFA8BC2C4745060017779B /* Builder */,
+				A84FDAE92C49A72D001BACDD /* DependencyInjection */,
 				A84FDABD2C4820DF001BACDD /* Network */,
 				A84FDAC62C4832D8001BACDD /* Components */,
 				A8AFA8842C46E5820017779B /* Feature */,
 				A8AFA8962C471F370017779B /* Util */,
-				A8AFA8B42C47381C0017779B /* Extensions */,
+				A8AFA8B42C47381C0017779B /* ViewCode */,
 				009C4C741D9F0CD600F0BC6C /* LaunchScreen.storyboard */,
 				009C4C721D9F0CD600F0BC6C /* Assets.xcassets */,
 				009C4C771D9F0CD600F0BC6C /* Info.plist */,
@@ -220,6 +218,14 @@
 			path = Thread;
 			sourceTree = "<group>";
 		};
+		A84FDAE92C49A72D001BACDD /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAEA2C49A740001BACDD /* SharedContainer.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
 		A8AFA8842C46E5820017779B /* Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,22 +274,12 @@
 			path = TweetList;
 			sourceTree = "<group>";
 		};
-		A8AFA8B42C47381C0017779B /* Extensions */ = {
+		A8AFA8B42C47381C0017779B /* ViewCode */ = {
 			isa = PBXGroup;
 			children = (
 				A8AFA8B52C47382A0017779B /* ViewCode.swift */,
 			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		A8AFA8BC2C4745060017779B /* Builder */ = {
-			isa = PBXGroup;
-			children = (
-				A8AFA8BD2C4745110017779B /* BuilderProtocol.swift */,
-				A8AFA8BF2C4745220017779B /* TimelineViewControllerBuilder.swift */,
-				A84FDAE42C48B74C001BACDD /* ThreadViewControllerBuilder.swift */,
-			);
-			path = Builder;
+			path = ViewCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +299,7 @@
 			);
 			name = OpenTweet;
 			packageProductDependencies = (
+				A84FDAE72C49A726001BACDD /* Swinject */,
 			);
 			productName = OpenTweet;
 			productReference = 009C4C681D9F0CD600F0BC6C /* OpenTweet.app */;
@@ -383,6 +380,7 @@
 			);
 			mainGroup = 009C4C5F1D9F0CD600F0BC6C;
 			packageReferences = (
+				A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 009C4C691D9F0CD600F0BC6C /* Products */;
 			projectDirPath = "";
@@ -427,19 +425,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84FDAEB2C49A740001BACDD /* SharedContainer.swift in Sources */,
 				A8AFA8C22C474D7C0017779B /* TweetCellViewModel.swift in Sources */,
 				A8AFA8982C4729850017779B /* FileReader.swift in Sources */,
 				A8AFA8B62C47382A0017779B /* ViewCode.swift in Sources */,
 				A84FDAC82C483300001BACDD /* Timeline.swift in Sources */,
 				A84FDAC42C482D8C001BACDD /* NetworkEndpoint.swift in Sources */,
 				A84FDAD92C488EFC001BACDD /* DateFormatters.swift in Sources */,
-				A8AFA8BE2C4745110017779B /* BuilderProtocol.swift in Sources */,
-				A8AFA8C02C4745220017779B /* TimelineViewControllerBuilder.swift in Sources */,
 				A8AFA8B32C4736580017779B /* TweetListView.swift in Sources */,
 				A8AFA8B82C4738E20017779B /* TweetCell.swift in Sources */,
 				A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */,
 				A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */,
-				A84FDAE52C48B74C001BACDD /* ThreadViewControllerBuilder.swift in Sources */,
 				A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */,
 				A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
@@ -605,7 +601,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -618,7 +615,10 @@
 				DEVELOPMENT_TEAM = QPU8QS3E62;
 				INFOPLIST_FILE = OpenTweet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.OpenTweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -632,7 +632,10 @@
 				DEVELOPMENT_TEAM = QPU8QS3E62;
 				INFOPLIST_FILE = OpenTweet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.OpenTweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -647,7 +650,11 @@
 				DEVELOPMENT_TEAM = QPU8QS3E62;
 				INFOPLIST_FILE = OpenTweetTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.OpenTweetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -663,7 +670,11 @@
 				DEVELOPMENT_TEAM = QPU8QS3E62;
 				INFOPLIST_FILE = OpenTweetTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.OpenTweetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -678,7 +689,11 @@
 				DEVELOPMENT_TEAM = QPU8QS3E62;
 				INFOPLIST_FILE = OpenTweetUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.OpenTweetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -693,7 +708,11 @@
 				DEVELOPMENT_TEAM = QPU8QS3E62;
 				INFOPLIST_FILE = OpenTweetUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opentable.OpenTweetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -741,6 +760,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A84FDAE72C49A726001BACDD /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 009C4C601D9F0CD600F0BC6C /* Project object */;
 }

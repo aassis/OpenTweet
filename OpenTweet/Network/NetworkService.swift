@@ -1,15 +1,9 @@
 import Foundation
 import Combine
 
-protocol NetworkServiceProtocol {
-    associatedtype NetworkEndpointType: NetworkEndpoint
-    var provider: NetworkProviderProtocol { get }
-    func request<T: Decodable>(_ endpoint: NetworkEndpointType, type: T.Type) -> AnyPublisher<T, Error>
-}
-
-struct NetworkService<NetworkEndpointType: NetworkEndpoint>: NetworkServiceProtocol {
+struct NetworkService<NetworkEndpointType: NetworkEndpoint> {
     var provider: NetworkProviderProtocol
-    
+
     init(provider: NetworkProviderProtocol) {
         self.provider = provider
     }
