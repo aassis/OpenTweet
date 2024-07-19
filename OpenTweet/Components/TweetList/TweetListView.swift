@@ -7,6 +7,7 @@ final class TweetListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.allowsSelection = true
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.clipsToBounds = false
         return tableView
     }()
 
@@ -32,10 +33,10 @@ extension TweetListView: ViewCode {
     }
 
     func buildConstraints() {
-        tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: ViewCodeConstants.sidePaddings).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: ViewCodeConstants.sidePaddings).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -ViewCodeConstants.sidePaddings).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -ViewCodeConstants.sidePaddings).isActive = true
     }
 
     func additionalConfiguration() {
