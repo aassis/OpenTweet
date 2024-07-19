@@ -27,7 +27,7 @@ final class ThreadViewController: UIViewController {
         super.viewDidLoad()
         tweetListView.tableView.delegate = self
         tweetListView.tableView.dataSource = self
-        tweetListView.tableView.register(TweetCell.self, forCellReuseIdentifier: TweetCell.CellIdentifier.name)
+        tweetListView.tableView.register(ThreadTweetCell.self, forCellReuseIdentifier: ThreadTweetCell.CellIdentifier.name)
         tweetListView.tableView.reloadData()
     }
 
@@ -47,7 +47,7 @@ extension ThreadViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TweetCell.CellIdentifier.name) as? TweetCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: ThreadTweetCell.CellIdentifier.name) as? ThreadTweetCell {
             let cellViewModel = viewModel.getViewModelForCellAt(indexPath: indexPath)
             cell.setupWith(viewModel: cellViewModel)
             return cell

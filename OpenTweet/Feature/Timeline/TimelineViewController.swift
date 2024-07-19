@@ -45,12 +45,6 @@ final class TimelineViewController: UIViewController {
                 self.tweetListView.tableView.reloadData()
             }.store(in: &cancellable)
 	}
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        /// Selecting a row at nil position effectively deselects any selected row, preventing leaving a row in a selected state upon attempting to view it's respective thread
-        tweetListView.tableView.selectRow(at: nil, animated: false, scrollPosition: .none)
-    }
 }
 
 extension TimelineViewController: UITableViewDataSource {
