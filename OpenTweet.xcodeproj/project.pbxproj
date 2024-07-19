@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,8 @@
 		A84FDAE82C49A726001BACDD /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAE72C49A726001BACDD /* Swinject */; };
 		A84FDAEB2C49A740001BACDD /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAEA2C49A740001BACDD /* SharedContainer.swift */; };
 		A84FDAF52C49D68B001BACDD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAF42C49D68B001BACDD /* AlamofireImage */; };
+		A84FDAF82C49DC64001BACDD /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAF72C49DC64001BACDD /* TimelineViewModelTests.swift */; };
+		A84FDAFC2C49EDF0001BACDD /* TweetCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -79,6 +81,8 @@
 		A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
 		A84FDAEA2C49A740001BACDD /* SharedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedContainer.swift; sourceTree = "<group>"; };
+		A84FDAF72C49DC64001BACDD /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
+		A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellViewModelTests.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		009C4C7F1D9F0CD600F0BC6C /* OpenTweetTests */ = {
 			isa = PBXGroup;
 			children = (
+				A84FDAF62C49DC42001BACDD /* ViewModelTests */,
 				009C4C801D9F0CD600F0BC6C /* OpenTweetTests.swift */,
 				009C4C821D9F0CD600F0BC6C /* Info.plist */,
 			);
@@ -226,6 +231,39 @@
 				A84FDAEA2C49A740001BACDD /* SharedContainer.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		A84FDAF62C49DC42001BACDD /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAFD2C4A1C73001BACDD /* Thread */,
+				A84FDAFA2C49EDE0001BACDD /* TweetCell */,
+				A84FDAF92C49DD9C001BACDD /* Timeline */,
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		A84FDAF92C49DD9C001BACDD /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAF72C49DC64001BACDD /* TimelineViewModelTests.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		A84FDAFA2C49EDE0001BACDD /* TweetCell */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */,
+			);
+			path = TweetCell;
+			sourceTree = "<group>";
+		};
+		A84FDAFD2C4A1C73001BACDD /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Thread;
 			sourceTree = "<group>";
 		};
 		A8AFA8842C46E5820017779B /* Feature */ = {
@@ -350,8 +388,9 @@
 		009C4C601D9F0CD600F0BC6C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "OpenTable, Inc.";
 				TargetAttributes = {
 					009C4C671D9F0CD600F0BC6C = {
@@ -458,6 +497,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */,
+				A84FDAFC2C49EDF0001BACDD /* TweetCellViewModelTests.swift in Sources */,
+				A84FDAF82C49DC64001BACDD /* TimelineViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
