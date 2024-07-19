@@ -63,7 +63,12 @@ extension TimelineViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return viewModel.tableView(tableView, cellForRowAt: indexPath)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: TweetCell.CellIdentifier.name) as? TweetCell {
+            let cellViewModel = viewModel.getViewModelForCellAt(indexPath: indexPath)
+            cell.setupWith(viewModel: cellViewModel)
+            return cell
+        }
+        return UITableViewCell()
     }
 }
 

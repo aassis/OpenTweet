@@ -1,11 +1,12 @@
 import Combine
+import Swinject
 import UIKit
 
 // MARK: - Protocol
 protocol ThreadViewModelProtocol {
     func numberOfSections() -> Int
     func numberOfItems() -> Int
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol
     func highlightSourceTweetIn(_ tableView: UITableView)
 }
 
@@ -31,14 +32,9 @@ final class ThreadViewModel: ThreadViewModelProtocol {
         return thread.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TweetCell.CellIdentifier.name) as? TweetCell {
-            let tweet = thread[indexPath.row]
-            let tweetViewModel = TweetCellViewModel(tweet: tweet)
-            cell.setupWith(viewModel: tweetViewModel)
-            return cell
-        }
-        return UITableViewCell()
+    func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol {
+        let tweet = thread[indexPath.row]
+        return Container.sharedContainer.resolve(TweetCellViewModelProtocol.self, argument: tweet)!
     }
 
     func highlightSourceTweetIn(_ tableView: UITableView) {

@@ -22,7 +22,7 @@ extension ViewCode {
 }
 
 struct ViewCodeConstants {
-    static let sidePaddings: CGFloat = 24.0
+    static let sidePaddings: CGFloat = 16.0
     static let verticalPaddings: CGFloat = 8.0
     static let insidePadding: CGFloat = 8.0
     static let avatarHeightWidth: CGFloat = 40.0

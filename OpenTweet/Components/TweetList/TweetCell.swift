@@ -12,6 +12,7 @@ final class TweetCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: ViewCodeConstants.fontSize, weight: .bold)
         label.textColor = .black
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -30,6 +31,7 @@ final class TweetCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: ViewCodeConstants.fontSize)
         label.textColor = .lightGray
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
@@ -129,8 +131,8 @@ extension TweetCell: ViewCode {
         labelAuthorName.leftAnchor.constraint(equalTo: imageAvatar.rightAnchor, constant: insidePadding).isActive = true
 
         labelDate.topAnchor.constraint(equalTo: labelAuthorName.topAnchor).isActive = true
-        labelDate.leftAnchor.constraint(equalTo: labelAuthorName.rightAnchor, constant: insidePadding).isActive = true
-        labelDate.rightAnchor.constraint(lessThanOrEqualTo: contentView.rightAnchor, constant: -sidePaddings).isActive = true
+        labelDate.leftAnchor.constraint(greaterThanOrEqualTo: labelAuthorName.rightAnchor, constant: insidePadding).isActive = true
+        labelDate.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -sidePaddings).isActive = true
 
         labelContent.topAnchor.constraint(equalTo: labelAuthorName.bottomAnchor, constant: insidePadding).isActive = true
         labelContent.leftAnchor.constraint(equalTo: labelAuthorName.leftAnchor).isActive = true

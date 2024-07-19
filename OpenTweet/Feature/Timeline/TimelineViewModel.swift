@@ -10,7 +10,7 @@ protocol TimelineViewModelProtocol {
 
     func numberOfSections() -> Int
     func numberOfItems() -> Int
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol
     func getThreadViewController(forIndexPath indexPath: IndexPath) -> UIViewController
 }
 
@@ -75,16 +75,9 @@ final class TimelineViewModel: TimelineViewModelProtocol {
         return timeline.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TweetCell.CellIdentifier.name) as? TweetCell {
-
-            let tweet = timeline[indexPath.row]
-            let cellViewModel = getCellViewModel(forTweet: tweet)
-            cell.setupWith(viewModel: cellViewModel)
-
-            return cell
-        }
-        return UITableViewCell()
+    func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol {
+        let tweet = timeline[indexPath.row]
+        return getCellViewModel(forTweet: tweet)
     }
 
     private func getCellViewModel(forTweet tweet: Tweet) -> TweetCellViewModelProtocol {

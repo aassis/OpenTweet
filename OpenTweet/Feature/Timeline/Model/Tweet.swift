@@ -24,7 +24,7 @@ struct Tweet: Codable {
               let author = try? container.decode(String.self, forKey: .author),
               let content = try? container.decode(String.self, forKey: .content),
               let dateString = try? container.decode(String.self, forKey: .date),
-              let date = DateFormatter.serviceDateFormatter.date(from: dateString) else {
+              let date = try? Date(dateString, strategy: Date.staticISO8601FormatStyle) else {
             throw NSError(domain: "com.opentable.OpenTweet", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode model"])
         }
 
