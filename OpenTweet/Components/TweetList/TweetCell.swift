@@ -7,6 +7,8 @@ final class TweetCell: UITableViewCell {
         static let name = "tweetCell"
     }
 
+    static let defaultImage = UIImage(systemName: "person")
+
     private lazy var labelAuthorName: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +40,8 @@ final class TweetCell: UITableViewCell {
     private lazy var imageAvatar: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = TweetCell.defaultImage
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
         imageView.layer.borderWidth = 1.0
         imageView.layer.borderColor = UIColor.black.cgColor
@@ -53,12 +56,16 @@ final class TweetCell: UITableViewCell {
         labelAuthorName.text = viewModel.authorName
         labelDate.text = viewModel.dateShortString
         labelContent.attributedText = viewModel.contentAttributedString
-        if let avatarUrlString = viewModel.avatarUrlString,
+        if let img = viewModel.avatarImage {
+            imageAvatar.image = img
+        } else if let avatarUrlString = viewModel.avatarUrlString,
            let url = URL(string: avatarUrlString) {
             imageAvatar.af.setImage(withURL: url,
                                     placeholderImage: UIImage(systemName: "person"),
                                     imageTransition: .crossDissolve(0.2),
-                                    runImageTransitionIfCached: false)
+                                    runImageTransitionIfCached: false) { response in
+                viewModel.saveAvatarImage(image: response.value)
+            }
         }
     }
 
@@ -97,7 +104,7 @@ final class TweetCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.imageAvatar.image = nil
+        imageAvatar.image = TweetCell.defaultImage
     }
 }
 

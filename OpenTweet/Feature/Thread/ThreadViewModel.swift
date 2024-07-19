@@ -16,11 +16,13 @@ final class ThreadViewModel: ThreadViewModelProtocol {
     // MARK: - Local Properties
     private let tappedTweet: Tweet
     private let thread: [Tweet]
+    private var storedCellViewModels: NSMutableDictionary = NSMutableDictionary()
 
     // MARK: - Init
-    init(tappedTweet: Tweet, thread: [Tweet]) {
+    init(tappedTweet: Tweet, thread: [Tweet], storedCellViewModels: NSMutableDictionary) {
         self.tappedTweet = tappedTweet
         self.thread = thread
+        self.storedCellViewModels = storedCellViewModels
     }
 
     // MARK: - TableViewDataSource functions
@@ -34,7 +36,17 @@ final class ThreadViewModel: ThreadViewModelProtocol {
 
     func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol {
         let tweet = thread[indexPath.row]
-        return Container.sharedContainer.resolve(TweetCellViewModelProtocol.self, argument: tweet)!
+        return getCellViewModel(forTweet: tweet)
+    }
+
+    private func getCellViewModel(forTweet tweet: Tweet) -> TweetCellViewModelProtocol {
+        if let cellViewModel = storedCellViewModels[tweet.id] as? TweetCellViewModelProtocol {
+            return cellViewModel
+        } else {
+            let cellViewModel = Container.sharedContainer.resolve(TweetCellViewModelProtocol.self, argument: tweet)!
+            storedCellViewModels[tweet.id] = cellViewModel
+            return cellViewModel
+        }
     }
 
     func highlightSourceTweetIn(_ tableView: UITableView) {

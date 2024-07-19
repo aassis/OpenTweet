@@ -18,12 +18,12 @@ protocol TimelineViewModelProtocol {
 final class TimelineViewModel: TimelineViewModelProtocol {
 
     // MARK: - Protocol required properties
-    var service: NetworkService<TimelineEndpoint>
+    private(set) var service: NetworkService<TimelineEndpoint>
 
     // MARK: - Local Properties
     private var timeline: [Tweet] = []
     private var threads: [String: [Tweet]] = [:]
-    private var storedCellViewModels: [String: TweetCellViewModelProtocol] = [:]
+    private var storedCellViewModels: NSMutableDictionary = NSMutableDictionary()
 
     // MARK: - Init
 
@@ -63,7 +63,7 @@ final class TimelineViewModel: TimelineViewModelProtocol {
             }
         }
 
-        return Container.sharedContainer.resolve(ThreadViewController.self, arguments: tappedTweet, tweetThread)!
+        return Container.sharedContainer.resolve(ThreadViewController.self, arguments: tappedTweet, tweetThread, storedCellViewModels)!
     }
 
     // MARK: - TableViewDataSource functions
@@ -81,7 +81,7 @@ final class TimelineViewModel: TimelineViewModelProtocol {
     }
 
     private func getCellViewModel(forTweet tweet: Tweet) -> TweetCellViewModelProtocol {
-        if let cellViewModel = storedCellViewModels[tweet.id] {
+        if let cellViewModel = storedCellViewModels[tweet.id] as? TweetCellViewModelProtocol {
             return cellViewModel
         } else {
             let cellViewModel = Container.sharedContainer.resolve(TweetCellViewModelProtocol.self, argument: tweet)!

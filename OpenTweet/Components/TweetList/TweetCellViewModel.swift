@@ -1,13 +1,13 @@
 import Foundation
-import Combine
 import UIKit
 
 protocol TweetCellViewModelProtocol {
-    typealias CellImageAnimated = (image: UIImage?, animated: Bool)
     var authorName: String { get }
     var avatarUrlString: String? { get }
     var dateShortString: String? { get }
     var contentAttributedString: NSAttributedString? { get }
+    var avatarImage: UIImage? { get }
+    func saveAvatarImage(image: UIImage?)
 }
 
 final class TweetCellViewModel: TweetCellViewModelProtocol {
@@ -40,6 +40,15 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
         }
     }()
 
+    private var _avatarImage: UIImage?
+    var avatarImage: UIImage? {
+        _avatarImage
+    }
+
+    func saveAvatarImage(image: UIImage?) {
+        self._avatarImage = image
+    }
+
     private func tweetContent() -> NSAttributedString {
         /**
          This function searches for a handle in the provided string using a regular expression, and applies a different weighted font and color for the range where the handle is found.
@@ -68,22 +77,5 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
         }
 
         return highlightHandle(fromContentText: tweet.content)
-    }
-
-    /// I didn't want to remove this implementation, but I stopped using it due to performance issues. I want to revisit it in the future to improve it.
-    private func loadUserAvatar() -> AnyPublisher<CellImageAnimated, Error>? {
-        if let imgUrl = tweet.avatar {
-            return URLSession.shared.loadImage(forUrlString: imgUrl)?
-                .compactMap({ response in
-                    let image = UIImage(data: response.data)
-                    let animated = !response.cached
-                    return CellImageAnimated(image: image, animated: animated)
-                })
-                .mapError({ failure in
-                    NSError(domain: "com.opentable.OpenTweet", code: failure.errorCode, userInfo: failure.userInfo)
-                })
-                .eraseToAnyPublisher()
-        }
-        return nil
     }
 }

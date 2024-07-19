@@ -19,7 +19,6 @@
 		A84FDACA2C48331A001BACDD /* TimelineEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */; };
 		A84FDACC2C4842CE001BACDD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */; };
 		A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */; };
-		A84FDAD52C487FE6001BACDD /* URLSession+CachedImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */; };
 		A84FDAD92C488EFC001BACDD /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAD82C488EFC001BACDD /* DateFormatters.swift */; };
 		A84FDAE02C48B67F001BACDD /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */; };
 		A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */; };
@@ -28,6 +27,7 @@
 		A84FDAF52C49D68B001BACDD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAF42C49D68B001BACDD /* AlamofireImage */; };
 		A84FDAF82C49DC64001BACDD /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAF72C49DC64001BACDD /* TimelineViewModelTests.swift */; };
 		A84FDAFC2C49EDF0001BACDD /* TweetCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */; };
+		A84FDB012C4A5271001BACDD /* ThreadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDB002C4A5271001BACDD /* ThreadViewModelTests.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -76,13 +76,13 @@
 		A84FDAC92C48331A001BACDD /* TimelineEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEndpoint.swift; sourceTree = "<group>"; };
 		A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		A84FDACD2C484A50001BACDD /* TimelineProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineProviderMock.swift; sourceTree = "<group>"; };
-		A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+CachedImageLoader.swift"; sourceTree = "<group>"; };
 		A84FDAD82C488EFC001BACDD /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		A84FDADF2C48B67F001BACDD /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
 		A84FDAEA2C49A740001BACDD /* SharedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedContainer.swift; sourceTree = "<group>"; };
 		A84FDAF72C49DC64001BACDD /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
 		A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellViewModelTests.swift; sourceTree = "<group>"; };
+		A84FDB002C4A5271001BACDD /* ThreadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModelTests.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -194,7 +194,6 @@
 				A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */,
 				A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */,
 				A84FDABE2C4822B7001BACDD /* NetworkService.swift */,
-				A84FDAD42C487FE6001BACDD /* URLSession+CachedImageLoader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -262,6 +261,7 @@
 		A84FDAFD2C4A1C73001BACDD /* Thread */ = {
 			isa = PBXGroup;
 			children = (
+				A84FDB002C4A5271001BACDD /* ThreadViewModelTests.swift */,
 			);
 			path = Thread;
 			sourceTree = "<group>";
@@ -486,7 +486,6 @@
 				A8AFA8B02C47363E0017779B /* TimelineViewModel.swift in Sources */,
 				A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */,
 				A84FDAE02C48B67F001BACDD /* ThreadViewController.swift in Sources */,
-				A84FDAD52C487FE6001BACDD /* URLSession+CachedImageLoader.swift in Sources */,
 				A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */,
 				A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */,
 			);
@@ -496,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84FDB012C4A5271001BACDD /* ThreadViewModelTests.swift in Sources */,
 				009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */,
 				A84FDAFC2C49EDF0001BACDD /* TweetCellViewModelTests.swift in Sources */,
 				A84FDAF82C49DC64001BACDD /* TimelineViewModelTests.swift in Sources */,

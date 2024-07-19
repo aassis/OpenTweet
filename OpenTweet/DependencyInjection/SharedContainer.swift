@@ -1,4 +1,5 @@
 import Swinject
+import Foundation
 
 extension Container {
     static let sharedContainer: Container = {
@@ -29,12 +30,21 @@ extension Container {
 
         // MARK: Thread
 
-        container.register(ThreadViewModelProtocol.self, factory: { (r: Resolver, tappedTweet: Tweet, thread: [Tweet]) in
-            ThreadViewModel(tappedTweet: tappedTweet, thread: thread)
+        container.register(ThreadViewModelProtocol.self, factory: { (r: Resolver,
+                                                                     tappedTweet: Tweet,
+                                                                     thread: [Tweet],
+                                                                     storedCellViewModels: NSMutableDictionary) in
+
+            ThreadViewModel(tappedTweet: tappedTweet, thread: thread, storedCellViewModels: storedCellViewModels)
         }).inObjectScope(.transient)
 
-        container.register(ThreadViewController.self, factory: { (r: Resolver, tappedTweet: Tweet, thread: [Tweet]) in
-            let viewModel = r.resolve(ThreadViewModelProtocol.self, arguments: tappedTweet, thread)!
+        container.register(ThreadViewController.self, factory: { (r: Resolver,
+                                                                  tappedTweet: Tweet,
+                                                                  thread: [Tweet],
+                                                                  storedCellViewModels: NSMutableDictionary) in
+            let viewModel = r.resolve(ThreadViewModelProtocol.self,
+                                      arguments: tappedTweet, thread, storedCellViewModels)!
+
             return ThreadViewController(viewModel: viewModel)
         }).inObjectScope(.transient)
 
