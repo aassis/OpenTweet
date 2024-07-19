@@ -9,6 +9,8 @@ class TweetCell: UITableViewCell {
 
     static let defaultImage = UIImage(systemName: "person")
 
+    // MARK: - Views
+
     private lazy var labelAuthorName: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +53,8 @@ class TweetCell: UITableViewCell {
         return imageView
     }()
 
+    // MARK: - Setup
+
     func setupWith(viewModel: TweetCellViewModelProtocol) {
         setupViewCode()
         labelAuthorName.text = viewModel.authorName
@@ -69,11 +73,15 @@ class TweetCell: UITableViewCell {
         }
     }
 
+    // MARK: - Reuse
+
     override func prepareForReuse() {
         super.prepareForReuse()
         imageAvatar.image = TweetCell.defaultImage
     }
 }
+
+// MARK: - ViewCode
 
 extension TweetCell: ViewCode {
     func setupViewCode() {

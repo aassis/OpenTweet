@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Protocol declaration
+
 protocol TweetCellViewModelProtocol {
     var authorName: String { get }
     var avatarUrlString: String? { get }
@@ -10,12 +12,21 @@ protocol TweetCellViewModelProtocol {
     func saveAvatarImage(image: UIImage?)
 }
 
+// MARK: - Implementation
+
 final class TweetCellViewModel: TweetCellViewModelProtocol {
+
+    // MARK: - Local Properties
+
     private let tweet: Tweet
+
+    // MARK: - Init
 
     init(tweet: Tweet) {
         self.tweet = tweet
     }
+
+    // MARK: - Protocol Required Properties
 
     var authorName: String {
         tweet.author
@@ -48,6 +59,8 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
     func saveAvatarImage(image: UIImage?) {
         self._avatarImage = image
     }
+
+    // MARK: - Protocol Functions
 
     private func tweetContent() -> NSAttributedString {
         /**

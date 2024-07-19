@@ -50,6 +50,8 @@ final class TimelineViewController: UIViewController {
 	}
 }
 
+// MARK: - TableViewDataSource
+
 extension TimelineViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
@@ -69,6 +71,8 @@ extension TimelineViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TableViewDelegate
+
 extension TimelineViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -85,6 +89,8 @@ extension TimelineViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UINavigationControllerDelegate
+
 extension TimelineViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController,
                               animationControllerFor operation: UINavigationController.Operation,
@@ -94,6 +100,8 @@ extension TimelineViewController: UINavigationControllerDelegate {
         return transitionAnimation
     }
 }
+
+// MARK: - UIViewControllerTransitioningDelegate
 
 extension TimelineViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

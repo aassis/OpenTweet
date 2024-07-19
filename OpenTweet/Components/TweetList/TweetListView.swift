@@ -21,6 +21,8 @@ final class TweetListView: UIView {
     }
 }
 
+// MARK: - ViewCode
+
 extension TweetListView: ViewCode {
     func setupViewCode() {
         buildHierarchy()
