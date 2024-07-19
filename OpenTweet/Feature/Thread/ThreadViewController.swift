@@ -25,6 +25,7 @@ final class ThreadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: false)
         tweetListView.tableView.delegate = self
         tweetListView.tableView.dataSource = self
         tweetListView.tableView.register(ThreadTweetCell.self, forCellReuseIdentifier: ThreadTweetCell.CellIdentifier.name)
@@ -34,6 +35,7 @@ final class ThreadViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.highlightSourceTweetIn(tweetListView.tableView)
+        self.navigationItem.setHidesBackButton(false, animated: true)
     }
 }
 

@@ -7,6 +7,8 @@ final class TimelineViewController: UIViewController {
 
     private var cancellable = Set<AnyCancellable>()
 
+    private let transitionAnimation = ExpandTransition()
+
     init(viewModel: TimelineViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -28,6 +30,7 @@ final class TimelineViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.title = "Timeline"
+        navigationController?.delegate = self
         tweetListView.tableView.delegate = self
         tweetListView.tableView.dataSource = self
         tweetListView.tableView.register(TweetCell.self, forCellReuseIdentifier: TweetCell.CellIdentifier.name)
@@ -77,6 +80,27 @@ extension TimelineViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = viewModel.getThreadViewController(forIndexPath: indexPath)
+        vc.transitioningDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension TimelineViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationController.Operation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transitionAnimation.popStyle = (operation == .pop)
+        return transitionAnimation
+    }
+}
+
+extension TimelineViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionAnimation
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionAnimation
     }
 }
