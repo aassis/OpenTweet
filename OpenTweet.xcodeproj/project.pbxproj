@@ -161,7 +161,6 @@
 				009C4C741D9F0CD600F0BC6C /* LaunchScreen.storyboard */,
 				009C4C721D9F0CD600F0BC6C /* Assets.xcassets */,
 				009C4C771D9F0CD600F0BC6C /* Info.plist */,
-				A84FDB022C4A702A001BACDD /* ExpandTransition.swift */,
 			);
 			path = OpenTweet;
 			sourceTree = "<group>";
@@ -305,6 +304,7 @@
 			children = (
 				A8AFA8972C4729850017779B /* FileReader.swift */,
 				A84FDAD82C488EFC001BACDD /* DateFormatters.swift */,
+				A84FDB022C4A702A001BACDD /* ExpandTransition.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
