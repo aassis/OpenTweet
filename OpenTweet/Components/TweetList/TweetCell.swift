@@ -1,5 +1,4 @@
 import UIKit
-import AlamofireImage
 
 class TweetCell: UITableViewCell {
 
@@ -53,24 +52,24 @@ class TweetCell: UITableViewCell {
         return imageView
     }()
 
+    // MARK: - Init
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViewCode()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Setup
 
     func setupWith(viewModel: TweetCellViewModelProtocol) {
-        setupViewCode()
         labelAuthorName.text = viewModel.authorName
         labelDate.text = viewModel.dateShortString
         labelContent.attributedText = viewModel.contentAttributedString
-        if let img = viewModel.avatarImage {
-            imageAvatar.image = img
-        } else if let avatarUrlString = viewModel.avatarUrlString,
-           let url = URL(string: avatarUrlString) {
-            imageAvatar.af.setImage(withURL: url,
-                                    placeholderImage: UIImage(systemName: "person"),
-                                    imageTransition: .crossDissolve(0.2),
-                                    runImageTransitionIfCached: false) { response in
-                viewModel.saveAvatarImage(image: response.value)
-            }
-        }
+        imageAvatar.loadImageFor(urlString: viewModel.avatarUrlString)
     }
 
     // MARK: - Reuse

@@ -24,11 +24,12 @@
 		A84FDAE32C48B692001BACDD /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAE22C48B692001BACDD /* ThreadViewModel.swift */; };
 		A84FDAE82C49A726001BACDD /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAE72C49A726001BACDD /* Swinject */; };
 		A84FDAEB2C49A740001BACDD /* SharedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAEA2C49A740001BACDD /* SharedContainer.swift */; };
-		A84FDAF52C49D68B001BACDD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = A84FDAF42C49D68B001BACDD /* AlamofireImage */; };
 		A84FDAF82C49DC64001BACDD /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAF72C49DC64001BACDD /* TimelineViewModelTests.swift */; };
 		A84FDAFC2C49EDF0001BACDD /* TweetCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */; };
 		A84FDB032C4A702A001BACDD /* ExpandTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDB022C4A702A001BACDD /* ExpandTransition.swift */; };
 		A84FDB052C4A864C001BACDD /* ThreadTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDB042C4A864C001BACDD /* ThreadTweetCell.swift */; };
+		A84FDB082C4DE893001BACDD /* TweetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FDB072C4DE893001BACDD /* TweetStore.swift */; };
+		A885B1C42C50110700B06551 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A885B1C32C50110700B06551 /* ImageCache.swift */; };
 		A8AFA8892C46E5AF0017779B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8882C46E5AF0017779B /* AppDelegate.swift */; };
 		A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */; };
 		A8AFA8922C46E9A50017779B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AFA8912C46E9A50017779B /* Tweet.swift */; };
@@ -85,6 +86,8 @@
 		A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellViewModelTests.swift; sourceTree = "<group>"; };
 		A84FDB022C4A702A001BACDD /* ExpandTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandTransition.swift; sourceTree = "<group>"; };
 		A84FDB042C4A864C001BACDD /* ThreadTweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadTweetCell.swift; sourceTree = "<group>"; };
+		A84FDB072C4DE893001BACDD /* TweetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetStore.swift; sourceTree = "<group>"; };
+		A885B1C32C50110700B06551 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A8AFA8882C46E5AF0017779B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8AFA88A2C46E5C50017779B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A8AFA8912C46E9A50017779B /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84FDAE82C49A726001BACDD /* Swinject in Frameworks */,
-				A84FDAF52C49D68B001BACDD /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +155,7 @@
 				A84FDAE92C49A72D001BACDD /* DependencyInjection */,
 				A84FDABD2C4820DF001BACDD /* Network */,
 				A84FDAC62C4832D8001BACDD /* Components */,
+				A84FDB062C4DE886001BACDD /* Store */,
 				A8AFA8842C46E5820017779B /* Feature */,
 				A8AFA8962C471F370017779B /* Util */,
 				A8AFA8B42C47381C0017779B /* ViewCode */,
@@ -196,6 +199,7 @@
 				A84FDAC32C482D8C001BACDD /* NetworkEndpoint.swift */,
 				A84FDACB2C4842CE001BACDD /* NetworkProvider.swift */,
 				A84FDABE2C4822B7001BACDD /* NetworkService.swift */,
+				A885B1C32C50110700B06551 /* ImageCache.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -257,6 +261,14 @@
 				A84FDAFB2C49EDF0001BACDD /* TweetCellViewModelTests.swift */,
 			);
 			path = TweetCell;
+			sourceTree = "<group>";
+		};
+		A84FDB062C4DE886001BACDD /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				A84FDB072C4DE893001BACDD /* TweetStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		A8AFA8842C46E5820017779B /* Feature */ = {
@@ -335,7 +347,6 @@
 			name = OpenTweet;
 			packageProductDependencies = (
 				A84FDAE72C49A726001BACDD /* Swinject */,
-				A84FDAF42C49D68B001BACDD /* AlamofireImage */,
 			);
 			productName = OpenTweet;
 			productReference = 009C4C681D9F0CD600F0BC6C /* OpenTweet.app */;
@@ -418,7 +429,6 @@
 			mainGroup = 009C4C5F1D9F0CD600F0BC6C;
 			packageReferences = (
 				A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */,
-				A84FDAF32C49D68B001BACDD /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 009C4C691D9F0CD600F0BC6C /* Products */;
 			projectDirPath = "";
@@ -469,6 +479,7 @@
 				A84FDB032C4A702A001BACDD /* ExpandTransition.swift in Sources */,
 				A8AFA8B62C47382A0017779B /* ViewCode.swift in Sources */,
 				A84FDB052C4A864C001BACDD /* ThreadTweetCell.swift in Sources */,
+				A84FDB082C4DE893001BACDD /* TweetStore.swift in Sources */,
 				A84FDAC82C483300001BACDD /* Timeline.swift in Sources */,
 				A84FDAC42C482D8C001BACDD /* NetworkEndpoint.swift in Sources */,
 				A84FDAD92C488EFC001BACDD /* DateFormatters.swift in Sources */,
@@ -483,6 +494,7 @@
 				A8AFA8B02C47363E0017779B /* TimelineViewModel.swift in Sources */,
 				A84FDACE2C484A50001BACDD /* TimelineProviderMock.swift in Sources */,
 				A84FDAE02C48B67F001BACDD /* ThreadViewController.swift in Sources */,
+				A885B1C42C50110700B06551 /* ImageCache.swift in Sources */,
 				A84FDABF2C4822B7001BACDD /* NetworkService.swift in Sources */,
 				A8AFA88B2C46E5C50017779B /* SceneDelegate.swift in Sources */,
 			);
@@ -811,14 +823,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		A84FDAF32C49D68B001BACDD /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -826,11 +830,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A84FDAE62C49A726001BACDD /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		A84FDAF42C49D68B001BACDD /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A84FDAF32C49D68B001BACDD /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

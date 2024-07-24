@@ -16,11 +16,18 @@ extension Container {
             return NetworkService<TimelineEndpoint>(provider: provider)
         }).inObjectScope(.container)
 
+        // MARK: Store
+
+        container.register(TweetStoreProtocol.self, factory: { r in
+            let service = r.resolve(NetworkService<TimelineEndpoint>.self)!
+            return TweetStore(service: service)
+        }).inObjectScope(.container)
+
         // MARK: Timeline
 
         container.register(TimelineViewModelProtocol.self, factory: { r in
-            let service = r.resolve(NetworkService<TimelineEndpoint>.self)!
-            return TimelineViewModel(service: service)
+            let store = r.resolve(TweetStoreProtocol.self)!
+            return TimelineViewModel(store: store)
         }).inObjectScope(.transient)
 
         container.register(TimelineViewController.self, factory: { r in
@@ -30,21 +37,13 @@ extension Container {
 
         // MARK: Thread
 
-        container.register(ThreadViewModelProtocol.self, factory: { (r: Resolver,
-                                                                     tappedTweet: Tweet,
-                                                                     thread: [Tweet],
-                                                                     storedCellViewModels: NSMutableDictionary) in
-
-            ThreadViewModel(tappedTweet: tappedTweet, thread: thread, storedCellViewModels: storedCellViewModels)
+        container.register(ThreadViewModelProtocol.self, factory: { (r: Resolver, tweet: Tweet) in
+            let store = r.resolve(TweetStoreProtocol.self)!
+            return ThreadViewModel(store: store, tappedTweet: tweet)
         }).inObjectScope(.transient)
 
-        container.register(ThreadViewController.self, factory: { (r: Resolver,
-                                                                  tappedTweet: Tweet,
-                                                                  thread: [Tweet],
-                                                                  storedCellViewModels: NSMutableDictionary) in
-            let viewModel = r.resolve(ThreadViewModelProtocol.self,
-                                      arguments: tappedTweet, thread, storedCellViewModels)!
-
+        container.register(ThreadViewController.self, factory: { (r: Resolver, tweet: Tweet) in
+            let viewModel = r.resolve(ThreadViewModelProtocol.self, argument: tweet)!
             return ThreadViewController(viewModel: viewModel)
         }).inObjectScope(.transient)
 

@@ -35,7 +35,7 @@ final class TimelineViewController: UIViewController {
         tweetListView.tableView.dataSource = self
         tweetListView.tableView.register(TweetCell.self, forCellReuseIdentifier: TweetCell.CellIdentifier.name)
 
-        viewModel.loadTimeline()
+        viewModel.loadContent()
             .sink { completion in
                 switch completion {
                 case .failure:
@@ -83,7 +83,7 @@ extension TimelineViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = viewModel.getThreadViewController(forIndexPath: indexPath)
+        let vc = viewModel.getThreadViewControllerFor(indexPath: indexPath)
         vc.transitioningDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }

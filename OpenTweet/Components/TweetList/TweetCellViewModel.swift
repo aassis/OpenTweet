@@ -8,8 +8,6 @@ protocol TweetCellViewModelProtocol {
     var avatarUrlString: String? { get }
     var dateShortString: String? { get }
     var contentAttributedString: NSAttributedString? { get }
-    var avatarImage: UIImage? { get }
-    func saveAvatarImage(image: UIImage?)
 }
 
 // MARK: - Implementation
@@ -50,15 +48,6 @@ final class TweetCellViewModel: TweetCellViewModelProtocol {
             return attString
         }
     }()
-
-    private var _avatarImage: UIImage?
-    var avatarImage: UIImage? {
-        _avatarImage
-    }
-
-    func saveAvatarImage(image: UIImage?) {
-        self._avatarImage = image
-    }
 
     // MARK: - Protocol Functions
 

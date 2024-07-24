@@ -5,6 +5,8 @@ final class ThreadViewController: UIViewController {
 
     private let viewModel: ThreadViewModelProtocol
 
+    private var cancellable = Set<AnyCancellable>()
+
     init(viewModel: ThreadViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -29,7 +31,19 @@ final class ThreadViewController: UIViewController {
         tweetListView.tableView.delegate = self
         tweetListView.tableView.dataSource = self
         tweetListView.tableView.register(ThreadTweetCell.self, forCellReuseIdentifier: ThreadTweetCell.CellIdentifier.name)
-        tweetListView.tableView.reloadData()
+
+        viewModel.loadThread()
+            .sink { completion in
+                switch completion {
+                case .failure:
+                    // present error
+                    break
+                default:
+                    break
+                }
+            } receiveValue: { loaded in
+                self.tweetListView.tableView.reloadData()
+            }.store(in: &cancellable)
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -24,14 +24,14 @@ final class TimelineViewModelTests: XCTestCase {
 
         var timelineLoaded: Bool = false
 
-        timelineViewModel?.loadTimeline()
+        timelineViewModel?.loadContent()
             .sink(receiveCompletion: { _ in },
                   receiveValue: { loaded in
                 timelineLoaded = loaded
             }).store(in: &cancellables)
 
         let indexPath = IndexPath(row: 0, section: 0)
-        let vc = timelineViewModel?.getThreadViewController(forIndexPath: indexPath)
+        let vc = timelineViewModel?.getThreadViewControllerFor(indexPath: indexPath)
 
         XCTAssertTrue(timelineLoaded)
         XCTAssertEqual(timelineViewModel?.numberOfSections(), 1)

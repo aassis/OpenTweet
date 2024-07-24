@@ -4,6 +4,7 @@ import UIKit
 
 // MARK: - Protocol
 protocol ThreadViewModelProtocol {
+    func loadThread() -> AnyPublisher<Bool, Error>
     func numberOfSections() -> Int
     func numberOfItems() -> Int
     func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol
@@ -14,15 +15,22 @@ protocol ThreadViewModelProtocol {
 final class ThreadViewModel: ThreadViewModelProtocol {
 
     // MARK: - Local Properties
+    private let store: TweetStoreProtocol
     private let tappedTweet: Tweet
-    private let thread: [Tweet]
-    private var storedCellViewModels: NSMutableDictionary = NSMutableDictionary()
+    private var thread: [Tweet] = []
 
     // MARK: - Init
-    init(tappedTweet: Tweet, thread: [Tweet], storedCellViewModels: NSMutableDictionary) {
+    init(store: TweetStoreProtocol,
+         tappedTweet: Tweet) {
+        self.store = store
         self.tappedTweet = tappedTweet
-        self.thread = thread
-        self.storedCellViewModels = storedCellViewModels
+    }
+
+    func loadThread() -> AnyPublisher<Bool, Error> {
+        return store.searchThreadForTweet(tappedTweet).compactMap { thread in
+            self.thread = thread
+            return true
+        }.eraseToAnyPublisher()
     }
 
     // MARK: - TableViewDataSource functions
@@ -36,17 +44,7 @@ final class ThreadViewModel: ThreadViewModelProtocol {
 
     func getViewModelForCellAt(indexPath: IndexPath) -> TweetCellViewModelProtocol {
         let tweet = thread[indexPath.row]
-        return getCellViewModel(forTweet: tweet)
-    }
-
-    private func getCellViewModel(forTweet tweet: Tweet) -> TweetCellViewModelProtocol {
-        if let cellViewModel = storedCellViewModels[tweet.id] as? TweetCellViewModelProtocol {
-            return cellViewModel
-        } else {
-            let cellViewModel = Container.sharedContainer.resolve(TweetCellViewModelProtocol.self, argument: tweet)!
-            storedCellViewModels[tweet.id] = cellViewModel
-            return cellViewModel
-        }
+        return store.getCellViewModelFor(tweet: tweet)
     }
 
     func highlightSourceTweetIn(_ tableView: UITableView) {

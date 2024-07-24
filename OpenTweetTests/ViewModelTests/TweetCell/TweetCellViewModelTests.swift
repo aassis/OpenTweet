@@ -22,7 +22,7 @@ final class TweetCellViewModelTests: XCTestCase {
     func testCellViewModelHasCorrectInformation() {
         self.timelineViewModel = Container.sharedContainer.resolve(TimelineViewModelProtocol.self)
 
-        timelineViewModel?.loadTimeline()
+        timelineViewModel?.loadContent()
             .sink(receiveCompletion: { _ in },
                   receiveValue: { _ in }).store(in: &cancellables)
 
